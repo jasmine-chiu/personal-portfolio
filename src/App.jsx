@@ -13,8 +13,15 @@ import headphone03 from "./assets/BRUTALIST_HEADPHONE_RENDER03.jpeg";
 import headphone04 from "./assets/BRUTALIST_HEADPHONE_RENDER04.jpeg";
 import brutalist_temple from "./assets/BRUTALIST_TEMPLE_3D_FLYOVER.mp4";
 import bt_tn from "./assets/bt_tn.png";
-
-
+import cat_mvmt from "./assets/CAT.mp4";
+import c_tn from "./assets/c_tn.png";
+import sg_mvmt from "./assets/SPIDER_GWEN.mov";
+import sg_tn from "./assets/sg_tn.png";
+import b1 from "./assets/BITSA.png";
+import b2 from "./assets/BITSA2.png";
+import cse from "./assets/CSE.png";
+import ys from "./assets/YS.mp4";
+import ys_tn from "./assets/ys_tn.png";
 
 function App() {
   const [med, setMed] = [];
@@ -76,19 +83,19 @@ function App() {
       </div>
       <div className="ani-container">
         <h2><i>Movement Practice (2024)</i></h2>
-        <p className="medium">3D Rig Manipulation on Autodesk Maya</p>
+        <p className="medium">3D Movement Animation on Autodesk Maya</p>
         <div className="ani-double-container">
             <div className="ani-half">
-              <p className="subheading-cont"><i>Spider-Gwen Rig<br/>created by INSERT NAME</i></p>
-              <video className="ani-half-vid" width="320" height="180" poster={l_tn} controls>
-                <source src={lacuna} type="video/mp4"/>
+              <p className="subheading-cont"><i>Spider-Gwen Rig<br/>created by Alex Salmar</i></p>
+              <video className="ani-half-vid" width="320" height="180" poster={sg_tn} controls>
+                <source src={sg_mvmt} type="video/mov"/>
                 Your browser does not support this video tag.
               </video>
             </div>
             <div className="ani-half">
-              <p className="subheading-cont"><i>Cat Rig<br/>created by INSERT NAME</i></p>
-              <video className="ani-half-vid" width="320" height="180" poster={l_tn} controls>
-                <source src={lacuna} type="video/mp4"/>
+              <p className="subheading-cont"><i>Cat Rig<br/>created by Truong</i></p>
+              <video id="small-vid" className="ani-half-vid" width="320" height="180" poster={c_tn} controls>
+                <source src={cat_mvmt} type="video/mp4"/>
                 Your browser does not support this video tag.
               </video>
             </div>
@@ -119,6 +126,24 @@ function App() {
           <img className="render-img" src={headphone04} />
           <img className="render-img" src={headphone02} />
         </div>
+      </div>
+      <div className="render-container">
+        <h2><i> VOLUNTEERING MARKETING ASSETS</i></h2>
+        <p className="medium">Designed with Adobe Premiere Pro, Adobe Illustrator & Canva</p>
+        <div className="render-row">
+          <img className="cse-img" src={cse} />
+        </div>
+        <div className="render">
+          <img className="b1-img" src={b1} />
+          <img className="b2-img" src={b2} />
+        </div>
+        <div className="render-row">
+          <video className="ys-vid" width="260" height="480" poster={ys_tn} controls>
+            <source src={ys} type="video/mp4"/>
+            Your browser does not support this video tag.
+          </video>
+        </div>
+        
         
       </div>
       <div className="trad-container">

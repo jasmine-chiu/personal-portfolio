@@ -187,6 +187,12 @@
 .html {
   background-color: #ffefef;
 }
+
+h1 {
+  font-size: 42px;
+  line-height: 22px;
+}
+
 .page {
   margin: 25px;
 }
@@ -260,6 +266,37 @@ h2 {
   margin-bottom: 20px;
 }
 
+.cse-img {
+  width: 640px;
+  border: 1px solid red;
+}
+
+.cse-row {
+  width: 100%;
+  object-fit: cover;
+}
+
+.b-row {
+  display: block;
+  height: 360px;
+  /* align-items: center; */
+  /* border: 1px red solid; */
+  object-fit: cover;
+}
+
+.b1-img {
+  height: 280px;
+  margin-top: -40px;
+}
+
+.b2-img {
+  flex: 0.6;
+  height: 280px;
+  width: 500px;
+}
+
+
+
 @media (max-width: 700px) {
   video {
     width: 400px; 
@@ -287,5 +324,42 @@ h2 {
 
   .ani-double-container {
     width: 100%;
+  }
+
+  #small-vid {
+    object-fit: cover;
+  }
+
+  .ani-vid {
+    object-fit: cover;
+  }
+
+  .ani-half-vid {
+    display: block;      
+    width: 100%;         
+    height: 180px;     
+    object-fit: cover;  
+    object-position: center;
+  }
+
+  .ani-double-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;         
+    width: 100%;
+  }
+
+  .ani-half {
+    flex: 1;            
+    min-width: 0; 
+  }
+
+  .b-row {
+    height: 200px;
+    flex-direction: row;
+  }
+
+  .ys-vid {
+    margin-top: -20px;
   }
 }
