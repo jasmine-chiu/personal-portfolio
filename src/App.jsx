@@ -130,18 +130,22 @@ function App() {
       <div className="render-container">
         <h2><i> VOLUNTEERING MARKETING ASSETS</i></h2>
         <p className="medium">Designed with Adobe Premiere Pro, Adobe Illustrator & Canva</p>
-        <div className="render-row">
-          <img className="cse-img" src={cse} />
-        </div>
-        <div className="render">
-          <img className="b1-img" src={b1} />
-          <img className="b2-img" src={b2} />
-        </div>
-        <div className="render-row">
-          <video className="ys-vid" width="260" height="480" poster={ys_tn} controls>
-            <source src={ys} type="video/mp4"/>
-            Your browser does not support this video tag.
-          </video>
+        <div className="col-container">
+          <div className="render-col" id="left-col">
+            <div className="cse-row">
+              <img className="cse-img" src={cse} />
+            </div>
+            <div className="b-row">
+              <img className="b1-img" src={b1} />
+              <img className="b2-img" src={b2} />
+            </div>
+          </div>
+          <div className="render-col">
+            <video className="ys-vid" width="225" height="400" poster={ys_tn} controls>
+              <source src={ys} type="video/mp4"/>
+              Your browser does not support this video tag.
+            </video>
+          </div>
         </div>
         
         
