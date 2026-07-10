@@ -47,6 +47,18 @@ function App() {
       </div>
       <div className="ani-container">
         <div className="ani">
+          <h2><i>Brutalist Temple (2025)</i></h2>
+          <p className="medium">3D Modelled Enviornment Animation</p>
+          <p className="subheading-cont"><i></i></p>
+          <p className="statement"><i></i></p>
+          <video className="ani-vid" width="640" height="360" poster={bt_tn} controls>
+            <source src={brutalist_temple} type="video/mp4"/>
+            Your browser does not support this video tag.
+          </video>
+        </div>
+      </div>
+      <div className="ani-container">
+        <div className="ani">
           <h2><i>Graffiti Cat (2025)</i></h2>
           <p className="medium">2D Digital Animation</p>
           <p className="subheading-cont"><i></i></p>
@@ -65,18 +77,6 @@ function App() {
           <p className="statement"><i>a short & fragmented animation about the passing of time, and the symbols that both permeate and connect peoples' lives.</i></p>
           <video className="ani-vid" width="640" height="360" poster={mm_tn} controls>
             <source src={major_work} type="video/mp4"/>
-            Your browser does not support this video tag.
-          </video>
-        </div>
-      </div>
-       <div className="ani-container">
-        <div className="ani">
-          <h2><i>Brutalist Temple (2025)</i></h2>
-          <p className="medium">3D Modelled Enviornment Animation</p>
-          <p className="subheading-cont"><i></i></p>
-          <p className="statement"><i></i></p>
-          <video className="ani-vid" width="640" height="360" poster={bt_tn} controls>
-            <source src={brutalist_temple} type="video/mp4"/>
             Your browser does not support this video tag.
           </video>
         </div>
