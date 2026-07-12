@@ -19,15 +19,35 @@ import sg_mvmt from "./assets/SPIDER_GWEN.mov";
 import sg_tn from "./assets/sg_tn.png";
 import b1 from "./assets/BITSA.png";
 import b2 from "./assets/BITSA2.png";
-import cse from "./assets/CSE.png";
 import ys from "./assets/YS.mp4";
+import ys2 from "./assets/ys2.mp4";
 import ys_tn from "./assets/ys_tn.png";
+import lt from "./assets/cse.mp4";
+import lt_tn from "./assets/lt_tn.png";
+import ban1 from "./assets/ban1.png";
+import ban2 from "./assets/ban2.png";
+import ban3 from "./assets/ban3.png";
+import ban4 from "./assets/ban4.png";
+import ban5 from "./assets/ban5.png";
+import ban6 from "./assets/ban6.png";
+import ban7 from "./assets/ban7.png";
+import ban8 from "./assets/ban8.png";
+import h1 from "./assets/hoodie.png";
+import h2 from "./assets/hoodie.jpg";
+import d1 from "./assets/d1.jpg";
+import d2 from "./assets/d2.gif";
+import d3 from "./assets/d3.jpg";
+import v1 from "./assets/v1.jpg";
+import v2 from "./assets/v2.jpg";
+import v31 from "./assets/v31.jpg";
+import v32 from "./assets/v32.jpg";
+
 
 function App() {
-  const [med, setMed] = [];
+  const [med, setMed] = useState('ALL');
 
-  function handleMed() {
-
+  function handleMed(category) {
+    setMed(category);
   }
 
   return (
@@ -37,16 +57,15 @@ function App() {
         <h1>JASMINE'S PERSONAL</h1>
         <h1>ANIMATION & 3D VISUALISATION PORTFOLIO</h1>
         {/* need to add: DART2210 ANIMATION, MISC. DIGITAL ART.*/}
-        view more volunteering work here:
-        <a>https://github.com/jasmine-chiu/personal-portfolio/tree/main/src/more</a>
       </div>
       <div className="filter">
-        <button className="filter-btn"><b>ALL</b></button>
-        <button className="filter-btn"><b>ANIMATION</b></button>
-        <button className="filter-btn"><b>3D VIS.</b></button>
-        <button className="filter-btn"><b>MISC. ART</b></button>
-        <button className="filter-btn"><b>MARKETING</b></button>
+        <button className="filter-btn" onClick={() => handleMed('ALL')}><b>ALL</b></button>
+        <button className="filter-btn" onClick={() => handleMed('ANIMATION')}><b>ANIMATION</b></button>
+        <button className="filter-btn" onClick={() => handleMed('3D VIS.')}><b>3D VIS.</b></button>
+        <button className="filter-btn" onClick={() => handleMed('MARKETING')}><b>MARKETING</b></button>
+        <button className="filter-btn" onClick={() => handleMed('MISC. ART')}><b>MISC. ART</b></button>
       </div>
+      {(med === 'ALL' || med === '3D VIS.') &&
       <div className="ani-container">
         <div className="ani">
           <h2><i>Brutalist Temple (2025)</i></h2>
@@ -59,6 +78,8 @@ function App() {
           </video>
         </div>
       </div>
+      }
+      {(med === 'ALL' || med === 'ANIMATION') &&
       <div className="ani-container">
         <div className="ani">
           <h2><i>Graffiti Cat (2025)</i></h2>
@@ -71,6 +92,8 @@ function App() {
           </video>
         </div>
       </div>
+      }
+      {(med === 'ALL' || med === 'ANIMATION') &&
       <div className="ani-container">
         <div className="ani">
           <h2><i>Memento Mori (2020)</i></h2>
@@ -82,6 +105,8 @@ function App() {
           </video>
         </div>
       </div>
+      }
+      {(med === 'ALL' || med === '3D VIS.') &&
       <div className="ani-container">
         <h2><i>Movement Practice (2024)</i></h2>
         <p className="medium">3D Movement Animation on Autodesk Maya</p>
@@ -102,6 +127,8 @@ function App() {
             </div>
         </div>
       </div>
+      }
+      {(med === 'ALL' || med === 'ANIMATION') &&
       <div className="ani-container">
         <div className="ani">
           <h2><i>l a c u n a (2024)</i></h2>
@@ -112,26 +139,27 @@ function App() {
           </video>
         </div>
       </div>
-      <div className="digi-container">
-        
-      </div>
+      }
+      {(med === 'ALL' || med === '3D VIS.') &&
       <div className="render-container">
         <h2><i> BRUTALIST HEADPHONES (2024)</i></h2>
         <p className="medium">3D Modelling in Autodesk Maya</p>
         <div className="render-row">
-          <img className="render-img" src={headphone01} />
-          <img className="render-img" src={headphone03} />
+          <img className="bh-img" src={headphone01} />
+          <img className="bh-img" src={headphone03} />
         </div>
         <div className="render-row">
-          <img className="render-img" src={headphone04} />
-          <img className="render-img" src={headphone02} />
+          <img className="bh-img" src={headphone04} />
+          <img className="bh-img" src={headphone02} />
         </div>
       </div>
+      }
+      {(med === 'ALL' || med === 'MARKETING') &&
       <div className="render-container">
-        <h2><i> VOLUNTEERING MARKETING ASSETS</i></h2>
-        <p className="medium">Designed with Adobe Premiere Pro, Adobe Illustrator & Canva</p>
+        <h2><i> VOLUNTEERING MARKETING SHORT FORM VIDEOS</i></h2>
+        <p className="medium">Designed with Adobe Premiere Pro</p>
         <div className="col-container">
-          <div className="render-col" id="left-col">
+          {/* <div className="render-col" id="left-col">
             <div className="cse-row">
               <img className="cse-img" src={cse} />
             </div>
@@ -139,20 +167,98 @@ function App() {
               <img className="b1-img" src={b1} />
               <img className="b2-img" src={b2} />
             </div>
-          </div>
+          </div> */}
           <div className="render-col">
             <video className="ys-vid" width="225" height="400" poster={ys_tn} controls>
               <source src={ys} type="video/mp4"/>
               Your browser does not support this video tag.
             </video>
           </div>
+          <div className="render-col">
+            <video className="cse-vid" width="225" height="400"  controls>
+              <source src={lt} type="video/mp4"/>
+              Your browser does not support this video tag.
+            </video>
+          </div>
+           <div className="render-col">
+            <video className="ys-vid" width="225" height="400" controls>
+              <source src={ys2} type="video/mp4"/>
+              Your browser does not support this video tag.
+            </video>
+          </div>
         </div>
-        
-        
       </div>
-      <div className="trad-container">
-        
+      }
+      {(med === 'ALL' || med === 'MARKETING') &&
+      <div className="render-container">
+        <h2><i> STUDENT SOCIETY FACEBOOK ASSETS</i></h2>
+        <p className="medium">Designed with Adobe Illustrator & Canva</p>
+          <div className="banner-row">
+            <img className="ban-img" src={ban1} />
+            <img className="ban-img" src={ban2} />
+          </div>
+          <div className="banner-row">
+            <img className="ban-img" src={ban3} />
+            <img className="ban-img" src={ban4} />
+          </div>
+          <div className="banner-row">
+            <img className="ban-img" src={ban5} />
+            <img className="ban-img" src={ban6} />
+          </div>
+          <div className="banner-row">
+            <img className="ban-img" src={ban7} />
+            <img className="ban-img" src={ban8} />
+          </div>
       </div>
+      }
+      {(med === 'ALL' || med === 'MARKETING') &&
+      <div className="render-container">
+        <h2><i> VOLUNTEERING MAGAZINE ASSETS</i></h2>
+        <p className="medium">Designed with Adobe Illustrator</p>
+          <div className="b-row">
+            <img className="b1-img" src={b1} />
+            <img className="b2-img" src={b2} />
+          </div>
+      </div>
+      }
+      {(med === 'ALL' || med === 'MISC. ART') &&
+      <div className="render-container">
+        <h2><i>CSESOC 2024 HOODIE DESIGN COMPETITION (2024)</i></h2>
+        <p className="medium">Drawn with Procreate</p>
+        <p className="subheading-cont"><i>Selected via popular vote of the CSESoc community</i></p>
+        <div className="b-row">
+          <img className="h-img" src={h1} />
+          <img className="h-img" src={h2} />
+        </div>
+      </div>
+      }
+      {(med === 'ALL' || med === 'MISC. ART') &&
+      <div className="render-container">
+        <h2><i>PERSONAL DIGITAL ART</i></h2>
+        <p className="medium">Drawn with Procreate</p>
+        <div className="b-row">
+          <img className="d-img" src={d1} />
+          <img className="d-img" src={d2} />
+          <img className="d-img" src={d3} />
+        </div>
+      </div>
+      }
+       {(med === 'ALL' || med === 'MISC. ART') &&
+      <div className="render-container">
+        <h2><i>PERSONAL TRADITIONAL ART</i></h2>
+        <p className="medium">Drawn/Painted with a mix of Pen, Pencil, Acrylic Paint, and Chalk Pastel </p>
+         <div className="b-row">
+          <img className="d-img" src={v2} />
+          <img className="d-img" src={v1} />
+         </div> 
+        <div className="bb-row">
+          <img className="d-img" src={v31} />
+          <img className="d-img" src={v32} />
+        </div>
+      </div>
+      }
+
+
     </div>
     </>
   )
