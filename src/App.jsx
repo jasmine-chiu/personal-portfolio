@@ -147,7 +147,7 @@ function App() {
       {(med === 'ALL' || med === '3D VIS.') &&
       <div className="ani-container">
         <div className="ani">
-          <h2><i>Brutalist Temple (2025)</i></h2>
+          <h2><i>BRUTALIST TEMPLE (2025)</i></h2>
           <p className="medium">3D Modelled Enviornment Animation</p>
           <p className="subheading-cont"><i></i></p>
           <p className="statement"><i></i></p>
@@ -161,7 +161,7 @@ function App() {
       {(med === 'ALL' || med === 'ANIMATION') &&
       <div className="ani-container">
         <div className="ani">
-          <h2><i>Memento Mori (2020)</i></h2>
+          <h2><i>MEMENTO MORI (2020)</i></h2>
           <p className="medium">2D Digital Animation</p>
           <p className="subheading-cont"><i>featuring Claude Bolling's "Irlandaise" (1973), and a quote from "It's Such A Beautiful Day" (2012).</i></p>
           <video className="ani-vid" width="640" height="360" poster={mm_tn} controls>
@@ -174,7 +174,7 @@ function App() {
       {(med === 'ALL' || med === 'ANIMATION') &&
       <div className="ani-container">
         <div className="ani">
-          <h2><i>Graffiti Cat (2025)</i></h2>
+          <h2><i>GRAFFITI CAT (2025)</i></h2>
           <p className="medium">2D Digital Animation</p>
           <p className="subheading-cont"><i></i></p>
           <p className="statement"><i></i></p>
@@ -187,7 +187,7 @@ function App() {
       }
       {(med === 'ALL' || med === '3D VIS.') &&
       <div className="ani-container">
-        <h2><i>Movement Practice (2024)</i></h2>
+        <h2><i>MOVEMENT PRACTICE (2024)</i></h2>
         <p className="medium">3D Movement Animation on Autodesk Maya</p>
         <div className="ani-double-container">
             <div className="ani-half">
