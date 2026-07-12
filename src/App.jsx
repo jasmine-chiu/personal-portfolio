@@ -38,7 +38,7 @@ function App() {
         <h1>ANIMATION & 3D VISUALISATION PORTFOLIO</h1>
         {/* need to add: DART2210 ANIMATION, MISC. DIGITAL ART.*/}
         view more volunteering work here:
-        
+        <a>https://github.com/jasmine-chiu/personal-portfolio/tree/main/src/more</a>
       </div>
       <div className="filter">
         <button className="filter-btn"><b>ALL</b></button>
