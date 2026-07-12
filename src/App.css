@@ -191,6 +191,8 @@
 h1 {
   font-size: 42px;
   line-height: 22px;
+  font-family: Helvetica;
+  color: #630000;
 }
 
 .page {
@@ -260,10 +262,16 @@ img {
 
 h2 {
   font-size: 24px;
+  color: #630000;
+  font-weight: bolder;
 }
+
+
 
 .medium {
   margin-bottom: 20px;
+  color:#630000;
+  font-style: italic;
 }
 
 .cse-img {
@@ -324,6 +332,12 @@ h2 {
   height: 400px;
 }
 
+.subheading-cont {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 5px;
+}
+
 @media (max-width: 700px) {
   video {
     width: 400px; 
@@ -337,6 +351,7 @@ h2 {
 
   h1 {
     font-size: 30px;
+    font-weight: bolder;
   }
 
   h2 {

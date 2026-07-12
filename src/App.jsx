@@ -37,6 +37,8 @@ function App() {
         <h1>JASMINE'S PERSONAL</h1>
         <h1>ANIMATION & 3D VISUALISATION PORTFOLIO</h1>
         {/* need to add: DART2210 ANIMATION, MISC. DIGITAL ART.*/}
+        view more volunteering work here:
+        
       </div>
       <div className="filter">
         <button className="filter-btn"><b>ALL</b></button>
@@ -74,7 +76,6 @@ function App() {
           <h2><i>Memento Mori (2020)</i></h2>
           <p className="medium">2D Digital Animation</p>
           <p className="subheading-cont"><i>featuring Claude Bolling's "Irlandaise" (1973), and a quote from "It's Such A Beautiful Day" (2012).</i></p>
-          <p className="statement"><i>a short & fragmented animation about the passing of time, and the symbols that both permeate and connect peoples' lives.</i></p>
           <video className="ani-vid" width="640" height="360" poster={mm_tn} controls>
             <source src={major_work} type="video/mp4"/>
             Your browser does not support this video tag.
@@ -105,7 +106,6 @@ function App() {
         <div className="ani">
           <h2><i>l a c u n a (2024)</i></h2>
           <p className="medium">2D Digital Animation</p>
-          <p className="statement"><i>dealing with the emptiness of a loading screen</i></p>
           <video className="ani-vid" width="640" height="360" poster={l_tn} controls>
             <source src={lacuna} type="video/mp4"/>
             Your browser does not support this video tag.
