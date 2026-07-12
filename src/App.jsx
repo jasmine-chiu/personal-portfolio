@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 import major_work from "./assets/MEMENTO_MORI_2D_ANIMATION.mp4";
@@ -15,7 +15,7 @@ import brutalist_temple from "./assets/BRUTALIST_TEMPLE_3D_FLYOVER.mp4";
 import bt_tn from "./assets/bt_tn.png";
 import cat_mvmt from "./assets/CAT.mp4";
 import c_tn from "./assets/c_tn.png";
-import sg_mvmt from "./assets/SPIDER_GWEN.mov";
+import sg_mvmt from "./assets/SPIDER_GWEN.mp4";
 import sg_tn from "./assets/sg_tn.png";
 import b1 from "./assets/BITSA.png";
 import b2 from "./assets/BITSA2.png";
@@ -42,9 +42,83 @@ import v2 from "./assets/v2.jpg";
 import v31 from "./assets/v31.jpg";
 import v32 from "./assets/v32.jpg";
 
-
 function App() {
   const [med, setMed] = useState('ALL');
+  const [loading, setLoading] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
+
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!loading) {
+      const timeout = setTimeout(() => setShowLoader(false), 400);
+      return () => clearTimeout(timeout);
+    } else {
+      setShowLoader(true);
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    setLoading(true);
+
+    const images = Array.from(container.querySelectorAll('img'));
+    const videos = Array.from(container.querySelectorAll('video'));
+    const total = images.length + videos.length;
+
+    if (total === 0) {
+      setLoading(false);
+      return;
+    }
+
+    let remaining = total;
+    let cancelled = false;
+
+    function checkDone() {
+      remaining -= 1;
+      if (!cancelled && remaining <= 0) {
+        setLoading(false);
+      }
+    }
+
+    images.forEach((img) => {
+      if (img.complete) {
+        checkDone();
+      } else {
+        img.addEventListener('load', checkDone, { once: true });
+        img.addEventListener('error', checkDone, { once: true });
+      }
+    });
+
+    videos.forEach((video) => {
+      if (video.readyState >= 1) {
+        checkDone();
+      } else {
+        video.addEventListener('loadedmetadata', checkDone, { once: true });
+        video.addEventListener('error', checkDone, { once: true });
+      }
+    });
+
+    const fallback = setTimeout(() => {
+      if (!cancelled) setLoading(false);
+    }, 12000);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(fallback);
+      images.forEach((img) => {
+        img.removeEventListener('load', checkDone);
+        img.removeEventListener('error', checkDone);
+      });
+      videos.forEach((video) => {
+        video.removeEventListener('loadedmetadata', checkDone);
+        video.removeEventListener('error', checkDone);
+      });
+    };
+  }, [med]);
 
   function handleMed(category) {
     setMed(category);
@@ -52,19 +126,24 @@ function App() {
 
   return (
     <>
-    <div className="page">
-      <div>
-        <h1>JASMINE'S PERSONAL</h1>
-        <h1>ANIMATION & 3D VISUALISATION PORTFOLIO</h1>
-        {/* need to add: DART2210 ANIMATION, MISC. DIGITAL ART.*/}
-      </div>
-      <div className="filter">
-        <button className="filter-btn" onClick={() => handleMed('ALL')}><b>ALL</b></button>
-        <button className="filter-btn" onClick={() => handleMed('ANIMATION')}><b>ANIMATION</b></button>
-        <button className="filter-btn" onClick={() => handleMed('3D VIS.')}><b>3D VIS.</b></button>
-        <button className="filter-btn" onClick={() => handleMed('MARKETING')}><b>MARKETING</b></button>
-        <button className="filter-btn" onClick={() => handleMed('MISC. ART')}><b>MISC. ART</b></button>
-      </div>
+      {showLoader && (
+        <div className={`loading-screen ${loading ? 'fade-in' : 'fade-out'}`}>
+          <div className="spinner"></div>
+          <p>loading media...</p>
+        </div>
+      )}
+      <div className="page" ref={containerRef} style={{ visibility: loading ? 'hidden' : 'visible' }}>
+        <div>
+          <h1>JASMINE'S PERSONAL</h1>
+          <h1>ANIMATION & 3D VISUALISATION PORTFOLIO</h1>
+        </div>
+        <div className="filter">
+          <button className={`filter-btn ${med === 'ALL' ? 'active' : ''}`} onClick={() => handleMed('ALL')}><b>ALL</b></button>
+          <button className={`filter-btn ${med === 'ANIMATION' ? 'active' : ''}`} onClick={() => handleMed('ANIMATION')}><b>ANIMATION</b></button>
+          <button className={`filter-btn ${med === '3D VIS.' ? 'active' : ''}`} onClick={() => handleMed('3D VIS.')}><b>3D VIS.</b></button>
+          <button className={`filter-btn ${med === 'MARKETING' ? 'active' : ''}`} onClick={() => handleMed('MARKETING')}><b>MARKETING</b></button>
+          <button className={`filter-btn ${med === 'MISC. ART' ? 'active' : ''}`} onClick={() => handleMed('MISC. ART')}><b>MISC. ART</b></button>
+        </div>
       {(med === 'ALL' || med === '3D VIS.') &&
       <div className="ani-container">
         <div className="ani">
@@ -74,6 +153,19 @@ function App() {
           <p className="statement"><i></i></p>
           <video className="ani-vid" width="640" height="360" poster={bt_tn} controls>
             <source src={brutalist_temple} type="video/mp4"/>
+            Your browser does not support this video tag.
+          </video>
+        </div>
+      </div>
+      }
+      {(med === 'ALL' || med === 'ANIMATION') &&
+      <div className="ani-container">
+        <div className="ani">
+          <h2><i>Memento Mori (2020)</i></h2>
+          <p className="medium">2D Digital Animation</p>
+          <p className="subheading-cont"><i>featuring Claude Bolling's "Irlandaise" (1973), and a quote from "It's Such A Beautiful Day" (2012).</i></p>
+          <video className="ani-vid" width="640" height="360" poster={mm_tn} controls>
+            <source src={major_work} type="video/mp4"/>
             Your browser does not support this video tag.
           </video>
         </div>
@@ -93,19 +185,6 @@ function App() {
         </div>
       </div>
       }
-      {(med === 'ALL' || med === 'ANIMATION') &&
-      <div className="ani-container">
-        <div className="ani">
-          <h2><i>Memento Mori (2020)</i></h2>
-          <p className="medium">2D Digital Animation</p>
-          <p className="subheading-cont"><i>featuring Claude Bolling's "Irlandaise" (1973), and a quote from "It's Such A Beautiful Day" (2012).</i></p>
-          <video className="ani-vid" width="640" height="360" poster={mm_tn} controls>
-            <source src={major_work} type="video/mp4"/>
-            Your browser does not support this video tag.
-          </video>
-        </div>
-      </div>
-      }
       {(med === 'ALL' || med === '3D VIS.') &&
       <div className="ani-container">
         <h2><i>Movement Practice (2024)</i></h2>
@@ -114,7 +193,7 @@ function App() {
             <div className="ani-half">
               <p className="subheading-cont"><i>Spider-Gwen Rig<br/>created by Alex Salmar</i></p>
               <video className="ani-half-vid" width="320" height="180" poster={sg_tn} controls>
-                <source src={sg_mvmt} type="video/mov"/>
+                <source src={sg_mvmt} type="video/mp4"/>
                 Your browser does not support this video tag.
               </video>
             </div>
