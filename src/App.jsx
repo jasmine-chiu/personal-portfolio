@@ -302,7 +302,7 @@ function App() {
       }
       {(med === 'ALL' || med === 'MISC. ART') &&
       <div className="render-container">
-        <h2><i>CSESOC 2024 HOODIE DESIGN COMPETITION (2024)</i></h2>
+        <h2><i>CSESOC HOODIE DESIGN COMPETITION (2024)</i></h2>
         <p className="medium">Drawn with Procreate</p>
         <p className="subheading-cont"><i>Selected via popular vote of the CSESoc community</i></p>
         <div className="b-row">
